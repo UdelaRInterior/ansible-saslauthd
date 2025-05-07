@@ -1,10 +1,17 @@
+---
+
 saslauthd_mechanism: "pam"
 saslauthd_mech_options: ""
 saslauthd_threads: 5
 saslauthd_options: "-c -m /var/run/saslauthd"
 
-saslauthd_mech_ldap_config:
-  ldap_version: 3
+saslauthd_config_options:
+  srvtab: /var/app/srvtab
+  pwcheck_method: saslauthd
 
 saslauthd_lib_ldap_config:
   TLS_CACERT: "/etc/ssl/certs/ca-certificates.crt"
+
+saslauthd_config_file: /etc/saslauthd.conf
+
+...
