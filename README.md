@@ -7,7 +7,7 @@ Configure Cyrus saslauthd deamon.
 
 - Idempotent.
 - Able to manage all authentification mechanisms and their options.
-- Configure `/etc/saslauthd.conf` and `/etc/ldap/ldap.conf` files for LDAP authentification mechanism.
+- Configure `saslauthd` and `/etc/ldap/ldap.conf` files for LDAP authentification mechanism.
 - Debian friendly (Ubuntu soon, anyone for Redhat likes and other platforms?).
 - A developer/maintainer willing to receive feedback and bug reports.
 
@@ -27,9 +27,9 @@ This role must be run as `root` but will **not** `become` by itself.
 | `saslauthd_options`           | `"-c -m /var/run/saslauthd"` | All other options for `saslauthd` (see `saslauthd(8)`).                      |
 | `saslauthd_mech_ldap_servers` | required if `saslauthd_mechanism` is `ldap` | Array of LDAP servers (`ldap_servers` in `saslauthd.conf`).   |
 | `saslauthd_mech_ldap_search_base` | required if `saslauthd_mechanism` is `ldap` | Search base for LDAP requests (`ldap_search_base` in `saslauthd.conf`). |
-| `saslauthd_mech_ldap_config`  | `{ldap_version: 3}` | Options for `ldap` mechanism to be written into `/etc/saslauthd.conf`.                |
+| `saslauthd__config_options`  | `{ldap_version: 3}` | General options for saslauthd to be written into `{{ saslauthd_config_file }}`.                |
 | `saslauthd_lib_ldap_config`   | `{TLS_CACERT: "/etc/ssl/certs/ca-certificates.crt"}` | Options for LDAP library to be written into `/etc/ldap/ldap.conf` (see `ldap.conf(5)`). |
-
+| `saslauthd_config_file`   | `/etc/saslauthd.conf` | Path to `saslauthd` configuration file. |
 
 ## Dependencies
 
